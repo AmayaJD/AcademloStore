@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/main.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Academlo Store</title>
+</head>
+<body>
+
+    <header class="header">
+
+        <div class="header_content">
+
+            <div>
+        <!-- debemos colocar un encale en la imagen para la pagina 
+                https://www.academlo.com -->
+                <a href="https://www.academlo.com" target="_blank">
+                    <img class="header_logo" src="./img/logo_nombre.png">
+                </a>
+            </div>
+
+            <div class="header_cart">
+                <img class="cart_button" src="./img/si.png">
+            </div>
+
+            <div class="menu_cart">
+
+                <div class="cart_products"></div>
+
+                <div class="cart_total">
+
+                    <div class="cart_total_info">
+                        <div class="info_amount">Cantidad: </div>
+                        <div class="info_total">Total: </div>
+                    </div>
+
+                    <button class="btn_buy">Comprar</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+<br>
+
+    <section class="logo">
+
+        <div class="logo_content">
+            <img class="content_logo" src="./img/logo_blanco.png">
+        </div>
+
+    </section>
+
+    <section class="category">
+
+        <div>
+            <h2 class="title">Products</h2>
+        </div>
+        <div class="div_category">
+            <select name="categ" id="categ">
+                <option value="Todos">All</option>
+                <option value="Camisetas">Shirts</option>
+                <option value="Hoddies">Hoddies</option>
+                <option value="Sweaters">Sweaters</option>
+            </select>
+        </div>
+
+    </section>
+
+    <section class="section">
+        <div class="products">
+        </div>
+    </section>
+
+    <section class="modal">
+        <div class="modal_product"></div>
+    </section>
+    
+    <br>
+
+    <footer>
+        <h3 id="reserva-derechos">
+            &copy 2023 Academlo GEN-29 - All rights reserved
+        </h3>
+    </footer>
+    
+    <br>
+    
+</body>
+</html>
