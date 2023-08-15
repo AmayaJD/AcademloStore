@@ -12,6 +12,7 @@ async function getApi(){
 
 function events() {
     const modal = document.querySelector('.modal');
+    const modal2 = document.querySelector('.modal2');
     const cart_button = document.querySelector('.cart_button');
     const menu_cart = document.querySelector('.menu_cart');
     cart_button.addEventListener('click', function () {
@@ -20,7 +21,12 @@ function events() {
 
     modal.addEventListener('click', function(){
         modal.classList.remove('active');
-    })
+    });
+
+    modal2.addEventListener('click', function(){
+        modal2.classList.remove('active');
+    });
+
 }
 
 function printProducts(db){
@@ -37,7 +43,7 @@ function printProducts(db){
                     <h3>${product.name}</h3>
                     <h4>Precio:$${product.price}</h4>
                     <p>Stock: ${product.quantity}</p>
-                    <button id= ${product.id} class='cart_buy'>Agregar al carrito</button>
+                    <button id= ${product.id} class='cart_buy'>Buy</button>
                 </div>
             </div>
         `
@@ -159,7 +165,10 @@ function totalCart(db){
 }
 
 function buyCart(db){
+    const menu_cart = document.querySelector('.menu_cart');
     const btnBuy = document.querySelector('.btn_buy');
+    const modal2 = document.querySelector('.modal2');
+    const modal_alert = document.querySelector('.modal_alert');
     btnBuy.addEventListener('click', function(){
         if(!Object.keys(db.cart).length){
             return alert('No tienes productos para comprar');
@@ -168,6 +177,11 @@ function buyCart(db){
         if(!response){
             return;
         }
+        modal_alert.innerHTML =`
+            <h1>Gracias por tú compra!</h1>
+            <span>x</span>
+        `;
+
         for (const product of db.products) {
             const cartProduct = db.cart[product.id];
             if(product.id===cartProduct?.id){
@@ -175,6 +189,9 @@ function buyCart(db){
             }
 
         }
+        modal2.classList.add('active');
+        menu_cart.classList.remove('active');
+
         db.cart = {}
         window.localStorage.setItem('products', JSON.stringify(db.products));
         window.localStorage.setItem('cart', JSON.stringify(db.cart));
