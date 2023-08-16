@@ -41,7 +41,7 @@ function printProducts(db){
 
                 <div class="product_info">
                     <h3>${product.name}</h3>
-                    <h4>Precio: $${product.price}</h4>
+                    <h4>Price: $${product.price}</h4>
                     <p>Stock: ${product.quantity}</p>
                     <button id= ${product.id} class='cart_buy'>Add Cart</button>
                 </div>
@@ -54,16 +54,28 @@ function printProducts(db){
 }
 
 function addToCart(db){
+    const modal2 = document.querySelector('.modal2');
+    const modal_alert = document.querySelector('.modal_alert');
     const productsHTML = document.querySelector('.products');
     productsHTML.addEventListener('click', function (event) {
         if(event.target.classList.contains('cart_buy')){
             const id = Number(event.target.id);
             const productFind = db.products.find(function (product) {
                 return product.id === id;
-            })
+            });
             //console.log(productFind);
             if(db.cart[productFind.id]){
+                if(productFind.quantity === db.cart[productFind.id].amount){
+                    modal_alert.innerHTML =`
+                        <h1>We don't have more in stock!</h1>
+                        <span>x</span>
+                    `;
+                    modal2.classList.add('active');
+                    return
+                    // return alert('No tenemos mas en bodega');
+                }
                 db.cart[productFind.id].amount++;
+
             }else {
                 productFind.amount = 1;
                 db.cart[productFind.id] = productFind;
@@ -117,7 +129,7 @@ function handleCart(db){
             });
             if(db.cart[productFind.id]){
                 if(productFind.quantity === db.cart[productFind.id].amount){
-                    return alert('No tenemos mas en bodega');
+                    return alert('We dont have more in stock');
                 }
             }
             db.cart[id].amount++;
@@ -125,7 +137,7 @@ function handleCart(db){
         if(event.target.classList.contains('less')){
             const id = Number(event.target.parentElement.id);
             if(db.cart[id].amount===1){
-                const response = confirm('Lo quieres borrar?');
+                const response = confirm('Do you want to delete the product?');
                 if(response){
                     delete db.cart[id];
             }
@@ -135,7 +147,7 @@ function handleCart(db){
         }
         if(event.target.classList.contains('trash')){
             const id = Number(event.target.parentElement.id);
-            const response = confirm('Si quieres borrar?');
+            const response = confirm('Do you want to delete the product??');
             if(!response){
                 return;
             }
@@ -171,14 +183,14 @@ function buyCart(db){
     const modal_alert = document.querySelector('.modal_alert');
     btnBuy.addEventListener('click', function(){
         if(!Object.keys(db.cart).length){
-            return alert('No tienes productos para comprar');
+            return alert('you have no product to buy');
         }
-        const response = confirm('Seguro que quieres comprar?');
+        const response = confirm('sure you want to buy?');
         if(!response){
             return;
         }
         modal_alert.innerHTML =`
-            <h1>Gracias por tú compra!</h1>
+            <h1>Thanks for your purchase!</h1>
             <span>x</span>
         `;
 
