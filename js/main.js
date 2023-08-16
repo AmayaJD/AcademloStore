@@ -43,7 +43,7 @@ function printProducts(db){
                     <h3>${product.name}</h3>
                     <h4>Precio:$${product.price}</h4>
                     <p>Stock: ${product.quantity}</p>
-                    <button id= ${product.id} class='cart_buy'>Buy</button>
+                    <button id= ${product.id} class='cart_buy'>Add Cart</button>
                 </div>
             </div>
         `
@@ -161,7 +161,7 @@ function totalCart(db){
     }
 
     info_total.textContent = 'Total: $'+totalProducts;
-    info_amount.textContent = 'Cantidad: ' +amountProducts;
+    info_amount.textContent = 'Amount: ' +amountProducts;
 }
 
 function buyCart(db){

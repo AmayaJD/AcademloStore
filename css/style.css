@@ -66,12 +66,12 @@ img {
     width: 20%;
     height: 80vh;
     padding: 10px;
-    transition: right 2500ms ease-out;
+    transition: right 1500ms ease-out;
 }
 
 .menu_cart.active {
     right: 0;
-    transition: right 1500ms ease-out;
+    transition: right 1000ms ease-out;
     font-family: Helvetica;
     font-size: 14px;
 }
@@ -124,6 +124,7 @@ img {
 
 .btn_buy{
     padding: 5px;
+    width: 70px;
     border-radius: 16px;
     cursor: pointer;
 }
@@ -326,7 +327,7 @@ img {
 .modal_alert {
     background-color: white;
     width: 20%;
-    height: 30%;
+    height: 20%;
     border-radius: 15px;
     display: flex;
     justify-content: center;
@@ -424,6 +425,11 @@ img {
     }
     .modal_group{
         font-size: 8px;
+    }
+
+    .modal_alert{
+        width: 90%;
+        height: 20%;
     }
 
 
