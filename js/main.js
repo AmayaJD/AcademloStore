@@ -41,7 +41,7 @@ function printProducts(db){
 
                 <div class="product_info">
                     <h3>${product.name}</h3>
-                    <h4>Precio:$${product.price}</h4>
+                    <h4>Precio: $${product.price}</h4>
                     <p>Stock: ${product.quantity}</p>
                     <button id= ${product.id} class='cart_buy'>Add Cart</button>
                 </div>

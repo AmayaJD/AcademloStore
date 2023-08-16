@@ -161,7 +161,7 @@ img {
     background: transparent;
     border: none;
     font-size: 14px;
-    height: 30px;
+    height: 33.4px;
     padding: 5px;
     width: 250px;
  }
@@ -201,7 +201,9 @@ img {
     transition: transform 350ms;
     cursor: pointer;
 }
-
+.product_info h4{
+    color: green;
+}
 .product:hover{
     transform: rotate(2deg);
 }
@@ -431,7 +433,7 @@ img {
         width: 90%;
         height: 20%;
     }
-
+    
 
 }
 
